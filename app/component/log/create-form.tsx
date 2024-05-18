@@ -13,7 +13,7 @@ import { createRecord } from "@/app/lib/actions";
 import { useFormState } from "react-dom";
 
 export default function Form({ haters }: { haters: HaterField[] }) {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(createRecord, initialState);
   return (
     <form action={dispatch}>
