@@ -4,21 +4,6 @@ import { useState } from "react";
 
 export default function ChatInput({ onSendMessage, onUploadFile, onCapture }) {
   const [message, setMessage] = useState("");
-  const [model, setModel] = useState("gpt-3.5-turbo");
-
-  const handleSendMessage = async () => {
-    const response = await fetch(`/api/openai`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message, model }),
-    });
-
-    const data = await response.json();
-    onSendMessage(data);
-    setMessage("");
-  };
 
   const handleGoogleAISendMessage = async () => {
     const response = await fetch(`/api/googleai`, {
@@ -61,16 +46,10 @@ export default function ChatInput({ onSendMessage, onUploadFile, onCapture }) {
         className="flex-1 border rounded px-4 py-2 mr-4"
       />
       <button
-        onClick={handleSendMessage}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Send to OpenAI
-      </button>
-      <button
         onClick={handleGoogleAISendMessage}
         className="ml-4 bg-green-500 text-white px-4 py-2 rounded"
       >
-        Send to Google AI
+        谷歌Gemini
       </button>
       <input type="file" onChange={handleFileUpload} className="ml-4" />
       <button
