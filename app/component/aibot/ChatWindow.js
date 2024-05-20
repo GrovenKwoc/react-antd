@@ -16,13 +16,16 @@ export default function ChatWindow({ messages }) {
     <div className="flex flex-col h-5/6 bg-white border rounded p-12 overflow-auto gap-10">
       {messages.map((msg, index) =>
         msg.type === "user" ? (
-          <div key={index} className=" text-white  relative text-right p-4">
+          <div
+            key={index}
+            className=" text-white  relative flex flex-row justify-end"
+          >
             <span className="absolute -top-8 text-gray-400 right-3 text-sm">
               我
             </span>
-            <span className="bg-blue-900 rounded-lg md:text-lg max-w-max">
+            <p className=" bg-blue-900 rounded-lg md:text-lg p-4">
               {msg.message}
-            </span>
+            </p>
           </div>
         ) : (
           <div
@@ -52,7 +55,10 @@ export default function ChatWindow({ messages }) {
                       <pre className="mermaid">{children}</pre>
                       <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={() => mermaid.run()}
+                        onClick={(e) => {
+                          mermaid.run();
+                          e.target.className = "hidden";
+                        }}
                       >
                         代码转图表
                       </button>
