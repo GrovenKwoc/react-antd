@@ -4,5 +4,5 @@ export const metadata = {
 };
 
 export default function AiBotLayout({ children }) {
-  return <div>{children}</div>;
+  return <div className="h-full w-full">{children}</div>;
 }

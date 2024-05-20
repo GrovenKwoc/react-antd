@@ -30,6 +30,7 @@ export default function TestLayout({
 }) {
   const [collapsed, setCollapsed] = useState(true);
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -111,7 +112,7 @@ export default function TestLayout({
   }
   return (
     <AntdRegistry>
-      <AntdLayout className="container">
+      <AntdLayout className="h-dvh">
         <AntdSider
           collapsible
           collapsed={collapsed}
@@ -120,7 +121,7 @@ export default function TestLayout({
           <div className="demo-logo-vertical">
             <Html5TwoTone className="text-6xl container justify-center" />
           </div>
-          {/* <AntdMenu
+          <AntdMenu
             theme="dark"
             defaultSelectedKeys={[pathname]}
             mode="inline"
@@ -129,8 +130,8 @@ export default function TestLayout({
               router.push(obj.key);
             }}
             className="sticky top-0"
-          /> */}
-          <Flex
+          />
+          {/* <Flex
             vertical
             gap="large"
             align="start"
@@ -180,23 +181,23 @@ export default function TestLayout({
               <UserOutlined />
               &nbsp;&nbsp;使用教程
             </Link>
-          </Flex>
+          </Flex> */}
         </AntdSider>
         <AntdLayout>
           <AntdHeader>
             <strong className="text-white">建议您使用Chrome PC浏览器</strong>
           </AntdHeader>
 
-          <AntdContent className="mx-2 overflow-y-auto">
+          <AntdContent className="mx-2">
             <AntdBreadcrumb items={breadscrumbItems}></AntdBreadcrumb>
-            <div className="min-h-dvh">{children}</div>
+            {children}
           </AntdContent>
           <AntdFooter>
             记仇网 ©{new Date().getFullYear()} Created by G.W.O@SoulApp
           </AntdFooter>
         </AntdLayout>
       </AntdLayout>
-      <Tour
+      {/* <Tour
         open={open}
         onClose={() => setOpen(false)}
         steps={steps}
@@ -205,7 +206,7 @@ export default function TestLayout({
             {current + 1} / {total}
           </span>
         )}
-      />
+      /> */}
     </AntdRegistry>
   );
 }

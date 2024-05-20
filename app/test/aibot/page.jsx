@@ -10,7 +10,7 @@ export default function Home() {
   const [stream, setStream] = useState(null);
 
   const handleSendMessage = (message) => {
-    setMessages([...messages, { type: "text", content: message }]);
+    setMessages((messages) => [...messages, message]);
   };
 
   const handleUploadFile = (file) => {
@@ -22,7 +22,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-svh">
+    <div className="flex flex-col justify-around h-full">
       <ChatWindow messages={messages} />
       {stream && <VideoStream stream={stream} />}
       <ChatInput
