@@ -13,6 +13,6 @@ export async function POST(request) {
     return NextResponse.json(text);
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error: "Google AI 在开小差..." });
+    return NextResponse.json("Google AI 在开小差...");
   }
 }

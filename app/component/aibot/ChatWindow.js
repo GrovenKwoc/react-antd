@@ -8,22 +8,26 @@ import "katex/dist/katex.min.css";
 import mermaid from "mermaid";
 
 export default function ChatWindow({ messages }) {
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "dark",
+  });
   return (
     <div className="flex flex-col h-5/6 bg-white border rounded p-12 overflow-auto gap-10">
       {messages.map((msg, index) =>
         msg.type === "user" ? (
-          <p key={index} className=" text-white text-right md:text-lg relative">
-            <span className="absolute -top-10 text-gray-400 right-3 text-sm">
+          <div key={index} className=" text-white  relative text-right ">
+            <span className="absolute -top-8 text-gray-400 right-3 text-sm">
               我
             </span>
-            <span className="bg-blue-900  w-max  p-4 rounded-lg">
+            <span className="bg-blue-900 rounded-lg p-4  md:text-lg max-w-max">
               {msg.message}
             </span>
-          </p>
+          </div>
         ) : (
           <div
             key={index}
-            className="relative md:text-lg w-max rounded-lg bg-gray-200 text-gray-700 p-4 "
+            className="relative md:text-lg w-max rounded-lg bg-gray-200 text-gray-700 p-4"
           >
             <span className="absolute -top-8 text-gray-400 left-3 text-sm">
               AI专家
@@ -46,6 +50,12 @@ export default function ChatWindow({ messages }) {
                   ) : match && match[1] == "mermaid" ? (
                     <>
                       <pre className="mermaid">{children}</pre>
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => mermaid.run()}
+                      >
+                        代码转图表
+                      </button>
                     </>
                   ) : (
                     <code {...rest} className={className}>
