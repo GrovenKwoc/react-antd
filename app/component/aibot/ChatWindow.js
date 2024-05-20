@@ -16,11 +16,11 @@ export default function ChatWindow({ messages }) {
     <div className="flex flex-col h-5/6 bg-white border rounded p-12 overflow-auto gap-10">
       {messages.map((msg, index) =>
         msg.type === "user" ? (
-          <div key={index} className=" text-white  relative text-right ">
+          <div key={index} className=" text-white  relative text-right p-4">
             <span className="absolute -top-8 text-gray-400 right-3 text-sm">
               我
             </span>
-            <span className="bg-blue-900 rounded-lg p-4  md:text-lg max-w-max">
+            <span className="bg-blue-900 rounded-lg md:text-lg max-w-max">
               {msg.message}
             </span>
           </div>
